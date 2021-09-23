@@ -2,25 +2,16 @@
 import All from "./All"
 
 
-const all1 = {
-    title: 'All #1',
-    description: 'Descrip from all #1',
-    completed:false
-}
+const AllList = ({state, allDelete}) => {
 
 
-const all2 = {
-    title: 'All #2',
-    description: 'Descrip from all #2',
-    completed:false
-}
-
-
-const AllList = () => {
     return (
         <>
-            <All list_task = {all1}/>
-            <All list_task = {all2}/>
+        <h1>I am AllList</h1>
+            {
+                state.map(each => <All list_task = {each} key = {each.id} allDelete = {allDelete}/>)
+            }
+            
         </>
     )
 }
