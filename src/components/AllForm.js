@@ -24,8 +24,11 @@ const AllForm = ({addTask}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(e.target.title.value, e.target.description.value)
-        addTask(e.target.title.value, e.target.description.value)
+        if(e.target.title.value && e.target.description.value) {
+            addTask(e.target.title.value, e.target.description.value)
+        }
+        
+
     
     
 

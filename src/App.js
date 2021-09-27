@@ -47,10 +47,10 @@ const App = () => {
 
     const addTask = (title, description) => {
         
-
+        
         const newTask = [
             ...all,
-            {title:title, description:description}
+            {id: Date.now(),title:title, description:description}
            
         ]
 
