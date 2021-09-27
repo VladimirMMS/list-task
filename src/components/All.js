@@ -1,6 +1,7 @@
 
 
-const All = ({list_task, allDelete}) => {
+const All = ({list_task, allDelete, finishTask, finishState}) => {
+
 
     return (
         
@@ -9,8 +10,9 @@ const All = ({list_task, allDelete}) => {
                 <div className = 'header-card' style = {{textAlign:"right"}}>
                     <h3 className = 'card-title text-right'>
                         {list_task.title}
-                        <button className = "btn btn-sm btn-success ml-2">
-                            FInish
+                        <button className = "btn btn-sm btn-success ml-2" onClick = {()=> finishTask(list_task.id)}>
+                            {list_task.completed ? "Finished": "To Finish"}
+                            
                         </button>
                     </h3>
                     

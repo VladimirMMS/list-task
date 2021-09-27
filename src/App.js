@@ -37,7 +37,25 @@ const App = () => {
         })
 
         setAll(changedAll)
+    }
 
+    const finishTask = (allId) => {
+
+        const changedAll = all.map(element => allId === element.id ? {...element, completed: !element.completed}: element)
+        setAll(changedAll)
+    }
+
+    const addTask = (title, description) => {
+        
+
+        const newTask = [
+            ...all,
+            {title:title, description:description}
+           
+        ]
+
+        setAll(newTask)
+      
     }
 
     return (
@@ -46,10 +64,11 @@ const App = () => {
                 <div className = 'col-8'>
                     <AllList state = {all}
                             allDelete = {allDelete}
+                            finishTask = {finishTask}
                     />
                 </div>
                 <div className = 'col-4'>
-                    <AllForm/>
+                    <AllForm addTask = {addTask}/>
                 </div>
             </div>
         </div>   
