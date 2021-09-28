@@ -29,6 +29,7 @@ const initAll = [
 const App = () => {
 
     const [all, setAll] = useState(initAll)
+    const [edit, setEdit] = useState(null)
 
     const allDelete = (allId) => {
         
@@ -46,16 +47,22 @@ const App = () => {
     }
 
     const addTask = (title, description) => {
-        
-        
         const newTask = [
             ...all,
             {id: Date.now(),title:title, description:description}
-           
         ]
-
         setAll(newTask)
-      
+    }
+
+    const update = (allEdit) => {
+        
+        const editAll = all.map(element =>(
+            element.id === allEdit.id 
+            ? allEdit: element
+        ))
+        
+    
+        setAll(editAll)
     }
 
     return (
@@ -65,10 +72,16 @@ const App = () => {
                     <AllList state = {all}
                             allDelete = {allDelete}
                             finishTask = {finishTask}
+                            setEdit = {setEdit}
                     />
                 </div>
                 <div className = 'col-4'>
-                    <AllForm addTask = {addTask}/>
+                    <AllForm 
+                    addTask = {addTask}
+                    edit = {edit}
+                    update = {update}
+                    />
+
                 </div>
             </div>
         </div>   

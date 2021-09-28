@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 const inialState = {
     title: "",
@@ -6,31 +6,38 @@ const inialState = {
 
 }
 
-const AllForm = ({addTask}) => {
+const AllForm = ({addTask,edit, update}) => {
 
     const [formValues, setformValues] = useState(inialState);
-
     const {title, description} = formValues
 
+    useEffect(() => {
+        if(edit) {
+            setformValues(edit)
+        }
+        
+    }, [edit])
     const getValue = (e) => {
         
         const data = {
             ...formValues,
             [e.target.name]: e.target.value
         }
-
         setformValues(data)
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         if(e.target.title.value && e.target.description.value) {
-            addTask(e.target.title.value, e.target.description.value)
+            
         }
-        
+         if(edit) {
+             update(formValues)
+         }
+         else {
+            addTask(e.target.title.value, e.target.description.value)
+         }
 
-    
-    
 
     }
 

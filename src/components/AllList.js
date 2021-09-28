@@ -2,7 +2,7 @@
 import All from "./All"
 
 
-const AllList = ({state, allDelete, finishTask}) => {
+const AllList = ({state, allDelete, finishTask, setEdit}) => {
 
     return (
         <>
@@ -12,7 +12,8 @@ const AllList = ({state, allDelete, finishTask}) => {
                 <All list_task = {each} 
                      key = {each.id} 
                      allDelete = {allDelete} 
-                     finishTask = {finishTask} 
+                     finishTask = {finishTask}
+                     setEdit = {setEdit} 
                      />)
             }
             
